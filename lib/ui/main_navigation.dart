@@ -1,58 +1,61 @@
 import 'package:flutter/material.dart';
+import 'package:task_app/ui/home.dart';
+import 'package:task_app/ui/setting.dart';
 
-class MainBottomNavigation extends StatelessWidget{
-
-  final _tab = <Tab> [
-    Tab( text:'ホーム', icon: Icon(Icons.home)),
-    Tab( text:'カレンダー', icon: Icon(Icons.calendar_today)),
-  ];
-
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: _tab.length,
-      child: Scaffold(
-        appBar: AppBar(
-          leading: IconButton(icon: Icon(Icons.menu_sharp)),
-          title: const Text('TabBar'),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.settings),
-              onPressed: () {
-
-              },
-            )
-          ],
-          bottom: TabBar(
-            tabs: _tab,
-          ),
-        ),
-        body: TabBarView(
-            children: <Widget> [
-              TabPage(title: 'ホーム', icon: Icons.home),
-              TabPage(title: 'カレンダー', icon: Icons.calendar_today),
-            ]
-        ),
-      ),
-    );
-  }
+class MainBottomNavigation extends StatefulWidget{
+  @override
+  _MainBottomNavigationState createState() => _MainBottomNavigationState();
 }
 
-class TabPage extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  const TabPage({Key key, this.icon, this.title}) : super(key: key);
+class _MainBottomNavigationState extends State<MainBottomNavigation> {
+  int _currentIndex = 0;
+
+  List<Widget> _bodyList = [
+    Home(),
+    SettingPage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final TextStyle textStyle = Theme.of(context).textTheme.display1;
-    return Center(
-      child:Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Icon(icon, size: 64.0, color: textStyle.color),
-          Text(title, style: textStyle),
-        ],
-      ),
-    );
-  }
+    return Scaffold(
+        appBar: AppBar(
+          leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () { Scaffold.of(context).openDrawer(); },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
+        title: const Text('タスクアプリ'),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.add),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          onTap: _onTap,
+          type: BottomNavigationBarType.fixed,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text("ホーム"),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              title: Text("設定"),
+            ),
+          ],
+        ),
+        body: _bodyList[_currentIndex],
+      );
+    }
+
+    _onTap(int i) {
+      setState(() {
+        _currentIndex = i;
+      });
+    }
 }
