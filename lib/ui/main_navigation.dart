@@ -30,9 +30,8 @@ class _MainBottomNavigationState extends State<MainBottomNavigation> {
         ),
         title: const Text('タスクアプリ'),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: Icon(Icons.add),
+        drawer: Drawer(
+          child: Center(child: Text("Drawer"),)
         ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
