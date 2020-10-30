@@ -19,19 +19,27 @@ class _MainBottomNavigationState extends State<MainBottomNavigation> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () { Scaffold.of(context).openDrawer(); },
-              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-            );
-          },
-        ),
+          leading:IconButton(
+            icon: CircleAvatar(
+              backgroundImage: NetworkImage(photoUrl),
+              backgroundColor: Colors.transparent, // 背景色
+              radius: 16, // 表示したいサイズの半径を指定
+            ),
+            onPressed: /* タップした時の処理 */,
+          );
         title: const Text('タスクアプリ'),
         ),
         drawer: Drawer(
-          child: Center(child: Text("Drawer"),)
+          child: Column(children: [
+            UserAccountsDrawerHeader(
+              accountName: Text("User Name"),
+              accountEmail: Text("User Email"),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor: Colors.white,
+                backgroundImage: NetworkImage("https://i.pravatar.cc/"),
+              ),
+            ),
+          ]),
         ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
@@ -43,8 +51,8 @@ class _MainBottomNavigationState extends State<MainBottomNavigation> {
               title: Text("ホーム"),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              title: Text("設定"),
+              icon: Icon(Icons.calendar_today_sharp),
+              title: Text("カレンダー"),
             ),
           ],
         ),
