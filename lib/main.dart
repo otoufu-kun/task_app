@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_app/ui/main_navigation.dart';
+import 'package:task_app/ui/login_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'タスクアプリ',
-      home: MainBottomNavigation()
+      home: LoginPage(),
     );
   }
 }

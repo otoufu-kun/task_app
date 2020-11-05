@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_app/ui/home.dart';
-import 'package:task_app/ui/setting.dart';
+import 'package:task_app/ui/parts/icon_button.dart';
+import 'package:task_app/ui/parts/signin_first.dart';
 
 class MainBottomNavigation extends StatefulWidget{
   @override
@@ -12,34 +13,15 @@ class _MainBottomNavigationState extends State<MainBottomNavigation> {
 
   List<Widget> _bodyList = [
     Home(),
-    SettingPage(),
+    ProfilePage(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          leading:IconButton(
-            icon: CircleAvatar(
-              backgroundImage: NetworkImage(photoUrl),
-              backgroundColor: Colors.transparent, // 背景色
-              radius: 16, // 表示したいサイズの半径を指定
-            ),
-            onPressed: /* タップした時の処理 */,
-          );
+          leading:ProfileIconButton(),
         title: const Text('タスクアプリ'),
-        ),
-        drawer: Drawer(
-          child: Column(children: [
-            UserAccountsDrawerHeader(
-              accountName: Text("User Name"),
-              accountEmail: Text("User Email"),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.white,
-                backgroundImage: NetworkImage("https://i.pravatar.cc/"),
-              ),
-            ),
-          ]),
         ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
@@ -51,8 +33,8 @@ class _MainBottomNavigationState extends State<MainBottomNavigation> {
               title: Text("ホーム"),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today_sharp),
-              title: Text("カレンダー"),
+              icon: Icon(Icons.account_balance),
+              title: Text("プロフィール"),
             ),
           ],
         ),
