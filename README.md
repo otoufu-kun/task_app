@@ -9,7 +9,7 @@
 ## Dependency
 Flutter 
 
-Firebase
+Firebase,
 google-sign-in
 
 ## Usage
