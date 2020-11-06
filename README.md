@@ -2,7 +2,7 @@
 
 タスクスケジューラーアプリ(Flutter製)
 
-<img src="![simulator_screenshot_D3D78391-D345-4A40-858C-D00AB554CA80](https://user-images.githubusercontent.com/45992316/98333427-11987080-2044-11eb-80fa-e29f035564da.png)" width="320px">
+<img src="https://user-images.githubusercontent.com/45992316/98333427-11987080-2044-11eb-80fa-e29f035564da.png" width="320px">
 ## Getting Started
 
 This project is a starting point for a Flutter application.
