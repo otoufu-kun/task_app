@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:task_app/ui/home.dart';
+import 'package:task_app/ui/task_page.dart';
 import 'package:task_app/ui/parts/icon_button.dart';
-import 'package:task_app/ui/parts/signin_first.dart';
+import 'package:task_app/ui/parts/profile.dart';
 
 class MainBottomNavigation extends StatefulWidget{
   @override
@@ -12,7 +12,7 @@ class _MainBottomNavigationState extends State<MainBottomNavigation> {
   int _currentIndex = 0;
 
   List<Widget> _bodyList = [
-    Home(),
+    TaskPage(),
     ProfilePage(),
   ];
 
@@ -21,7 +21,7 @@ class _MainBottomNavigationState extends State<MainBottomNavigation> {
     return Scaffold(
         appBar: AppBar(
           leading:ProfileIconButton(),
-        title: const Text('タスクアプリ'),
+          title: const Text('タスクアプリ'),
         ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
@@ -29,11 +29,11 @@ class _MainBottomNavigationState extends State<MainBottomNavigation> {
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text("ホーム"),
+              icon: Icon(Icons.note),
+              title: Text("タスク"),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.account_balance),
+              icon: Icon(Icons.account_box),
               title: Text("プロフィール"),
             ),
           ],

@@ -3,7 +3,7 @@ import 'package:task_app/model/login_model.dart';
 
 
 Widget ProfileIconButton() {
-  const iconSize = 32.0;
+  const iconSize = 40.0;
   return IconButton(
     icon: imageUrl == null
         ? Icon(
@@ -14,7 +14,6 @@ Widget ProfileIconButton() {
             backgroundImage: NetworkImage(imageUrl),
             backgroundColor: Colors.transparent,
             radius: iconSize / 2,
-        ),
-    onPressed: (){},
+        ), onPressed: () {},
   );
 }

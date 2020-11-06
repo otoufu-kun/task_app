@@ -13,9 +13,7 @@ class ProfilePage extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
               CircleAvatar(
-                backgroundImage: NetworkImage(
-                  imageUrl,
-                ),
+                backgroundImage: NetworkImage(imageUrl),
                 radius: 60,
                 backgroundColor: Colors.transparent,
               ),
@@ -25,7 +23,7 @@ class ProfilePage extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black54),
+                    color: Colors.grey),
               ),
               Text(
                 name,
@@ -40,7 +38,7 @@ class ProfilePage extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black54),
+                    color: Colors.grey),
               ),
               Text(
                 email,
@@ -53,11 +51,12 @@ class ProfilePage extends StatelessWidget {
               RaisedButton(
                 onPressed: () {
                   signOutGoogle();
-                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) {return LoginPage();}), ModalRoute.withName('/'));
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (context) {return LoginPage();}), ModalRoute.withName('/'));
                 },
                 color: Colors.blue,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(8.0),
                   child: Text(
                     'Sign Out',
                     style: TextStyle(fontSize: 25, color: Colors.white),

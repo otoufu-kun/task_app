@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'タスクアプリ',
-      home: LoginPage(),
+      home: LoginPage()
     );
   }
 }
